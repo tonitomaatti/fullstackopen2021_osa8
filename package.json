@@ -1,0 +1,24 @@
+{
+  "name": "fullstackopen2021_osa8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonitomaatti/fullstackopen2021_osa8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonitomaatti/fullstackopen2021_osa8/issues"
+  },
+  "homepage": "https://github.com/tonitomaatti/fullstackopen2021_osa8#readme",
+  "dependencies": {
+    "apollo-server": "^3.6.1",
+    "graphql": "^16.2.0"
+  }
+}
