@@ -20,7 +20,8 @@
   "homepage": "https://github.com/tonitomaatti/fullstackopen2021_osa8#readme",
   "dependencies": {
     "apollo-server": "^3.6.1",
-    "graphql": "^16.2.0"
+    "graphql": "^16.2.0",
+    "mongoose": "^6.1.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
