@@ -30,6 +30,7 @@ const App = () => {
       />
 
       <AuthorBornForm
+        authors={resultAuthors.data.allAuthors}
         show={page === 'authors'}
       />
 
