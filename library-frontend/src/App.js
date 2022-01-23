@@ -31,7 +31,7 @@ const App = () => {
   const client = useApolloClient()
 
   const [getCurrentUser, resultCurrentUser] = useLazyQuery(CURRENT_USER)
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null) 
 
   useEffect(() => {
     if (resultCurrentUser.data) {
@@ -98,7 +98,6 @@ const App = () => {
       />
 
       <Recommendations
-        books={resultBooks.data.allBooks}
         currentUser={currentUser}
         show={page === 'recommend'}
       />
