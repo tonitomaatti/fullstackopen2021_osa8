@@ -31,7 +31,9 @@ const App = () => {
   const client = useApolloClient()
 
   const [getCurrentUser, resultCurrentUser] = useLazyQuery(CURRENT_USER)
-  const [currentUser, setCurrentUser] = useState(null) 
+  const [currentUser, setCurrentUser] = useState(null)
+
+  const [getUserGenreBooks, resultUserGenreBooks] = useLazyQuery(ALL_BOOKS) 
 
   useEffect(() => {
     if (resultCurrentUser.data) {
@@ -58,6 +60,11 @@ const App = () => {
     client.resetStore()
   }
 
+  const displayRecommend = () => {
+    getUserGenreBooks({ variables: { genre: currentUser.favoriteGenre } })
+    setPage('recommend')
+  }
+
   return (
     <div>  
       <div>
@@ -65,7 +72,7 @@ const App = () => {
         <button onClick={() => setPage('books')}>books</button>
         {token ? <button onClick={() => setPage('add')}>add book</button> : null}
         {token ? null : <button onClick={() => setPage('login')}>login</button>}
-        {token ? <button onClick={() => setPage('recommend')}>recommend</button> : null}
+        {token ? <button onClick={() => displayRecommend()}>recommend</button> : null}
         {token ? <button onClick={logout}>logout</button> : null}
         <Notify errorMessage={errorMessage} />
       </div>
@@ -99,6 +106,7 @@ const App = () => {
 
       <Recommendations
         currentUser={currentUser}
+        result={resultUserGenreBooks}
         show={page === 'recommend'}
       />
 

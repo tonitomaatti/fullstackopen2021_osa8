@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { useLazyQuery } from '@apollo/client'
-import { ALL_BOOKS } from '../queries'
 
 const Recommendations = (props) => {
-  const [getBooks, result] = useLazyQuery(ALL_BOOKS) 
   const [books, setBooks] = useState(null)
 
   useEffect(() => {
-    if (props.currentUser) {
-      getBooks({ variables: { genre: props.currentUser.favoriteGenre } })
+    if (props.result) {
+      if (props.result.data) {
+        setBooks(props.result.data.allBooks)
+      }
     }
-  }, [props.currentUser]) // eslint-disable-line
-
-  useEffect(() => {
-    if (result.data) {
-      setBooks(result.data.allBooks)
-    }
-  }, [result])
+  }, [props.result])
 
   if (!props.show) {
     return null
@@ -24,6 +17,10 @@ const Recommendations = (props) => {
 
   if (!props.currentUser) {
     return null
+  }
+
+  if (props.result.loading) {
+    return <div>loading...</div>
   }
 
   if (!books) {
